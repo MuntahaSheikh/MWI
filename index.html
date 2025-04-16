@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MetaWave - Home</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Head -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4AF37',
+                        dark: '#0B1B2A',
+                        darkAlt: '#142A3E',
+                    },
+                    dropShadow: {
+                        gold: '0 2px 4px rgba(212,175,55,0.2)',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+
+    <!-- Custom Tailwind Styles -->
+    <style type="text/tailwindcss">
+        body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-animated-link {
+      @apply relative font-medium text-base text-[#EDEDED] px-1 py-2 transition-all duration-300 hover:text-primary;
+    }
+
+    .nav-animated-link::after {
+      content: '';
+      @apply absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-primary to-[#fff3b0] scale-x-0 origin-right transition-transform duration-300;
+    }
+
+    .nav-animated-link:hover::after {
+      @apply scale-x-100 origin-left;
+    }
+
+    .nav-animated-link.active {
+      @apply text-primary;
+    }
+
+    .nav-animated-link.active::after {
+      @apply scale-x-100 origin-left;
+    }
+
+    .mobile-style {
+      @apply text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-darkAlt transition-all duration-200;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-style {
+        @apply text-base font-medium py-2 px-2 rounded-none bg-transparent;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-dark text-white">
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 bg-gradient-to-r from-dark to-darkAlt backdrop-blur-md shadow-lg border-b border-[rgba(212,175,55,0.1)]">
+        <div class="max-w-8xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo.png" alt="MetaWave Logo" class="w-14 h-14">
+                <div
+                    class="text-[28px] sm:text-[30px] lg:text-[32px] font-extrabold text-primary uppercase tracking-wide drop-shadow-gold transition-transform duration-300 hover:scale-105 hover:tracking-wider">
+                    MetaWave
+                </div>
+            </div>
+
+            <!-- Hamburger -->
+            <div class="lg:hidden">
+                <button id="menu-btn"
+                    class="text-3xl text-primary focus:outline-none transition-transform duration-300 hover:scale-110">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+                <a href="index.html" class="nav-animated-link active">Home</a>
+                <a href="#services" class="nav-animated-link">Services</a>
+                <a href="#solutions" class="nav-animated-link">Solutions</a>
+                <a href="#portfolio" class="nav-animated-link">Portfolio</a>
+                <a href="about.html" class="nav-animated-link">About</a>
+                <a href="contact.html" class="nav-animated-link">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden flex flex-col md:flex-row md:justify-center md:gap-6 bg-darkAlt md:bg-transparent px-6 md:px-0 pt-4 md:pt-4 pb-6 md:pb-4 space-y-4 md:space-y-0 animate-fade-down transition-all duration-300 md:rounded-none rounded-b-xl shadow-xl md:shadow-none">
+            <a href="index.html" class="nav-animated-link mobile-style active">Home</a>
+            <a href="#services" class="nav-animated-link mobile-style">Services</a>
+            <a href="#solutions" class="nav-animated-link mobile-style">Solutions</a>
+            <a href="#portfolio" class="nav-animated-link mobile-style">Portfolio</a>
+            <a href="about.html" class="nav-animated-link mobile-style">About</a>
+            <a href="contact.html" class="nav-animated-link mobile-style">Contact</a>
+        </div>
+    </header>
+    <!-- Scripts -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const currentUrl = window.location.href;
+        document.querySelectorAll('a.nav-animated-link').forEach(link => {
+            if (currentUrl.includes(link.getAttribute('href'))) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section
+        class="bg-gradient-to-br from-dark to-darkAlt px-6 md:px-16 py-20 flex flex-col md:flex-row items-center justify-between gap-12">
+        <!-- Text Content -->
+        <div class="lg:w-1/2 md:w-2/2 text-white">
+            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
+                Revolutionizing the <span class="text-primary">Digital Era</span>
+            </h1>
+            <p class="text-gray-300 text-lg mb-8">
+                MetaWave Innovations delivers cutting-edge AI, ML, Web & App Development, and Digital Marketing services
+                to clients worldwide. We build tech-forward solutions with creativity, precision, and a passion for
+                innovation.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#services"
+                    class="bg-primary hover:bg-yellow-500 text-dark font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
+                    Explore Services
+                </a>
+                <a href="contact.html"
+                    class="bg-white text-dark hover:bg-gray-200 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+
+        <!-- Image -->
+        <div class="md:w-2/2 hidden lg:block">
+            <img src="assets/images/poster2.jpeg" alt="MetaWave Hero"
+                class="w-full h-auto max-w-[500px] rounded-2xl shadow-2xl">
+        </div>
+    </section>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+
+    <!-- Alpine.js (only needed if buttons should scroll the container) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <!-- Services Section -->
+    <section id="services" class="bg-[#101e30] px-4 md:px-8 py-20 text-center relative" x-data="{ scrollEl: null }"
+        x-init="scrollEl = $refs.slider">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-primary uppercase mb-12 tracking-wider">Our Services</h2>
+
+        <!-- Slider Wrapper -->
+        <div class="relative">
+
+            <!-- Left Button -->
+            <button @click="scrollEl.scrollBy({ left: -scrollEl.offsetWidth, behavior: 'smooth' })"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-[#D4AF37] hover:bg-yellow-500 text-black rounded-full w-10 h-10 items-center justify-center shadow-lg lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <!-- Right Button -->
+            <button @click="scrollEl.scrollBy({ left: scrollEl.offsetWidth, behavior: 'smooth' })"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-[#D4AF37] hover:bg-yellow-500 text-black rounded-full w-10 h-10 items-center justify-center shadow-lg lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+
+            <!-- Slider Container -->
+            <div class="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-6 sm:gap-8 px-1 sm:px-4 lg:overflow-visible snap-x snap-mandatory scroll-smooth scrollbar-hide"
+                x-ref="slider">
+                <!-- Service Cards -->
+                <template x-for="card in 6">
+                    <div
+                        class="snap-start shrink-0 w-[100%] sm:w-[47%] md:w-[45%] lg:w-full bg-dark text-white rounded-2xl p-6 shadow-lg hover:-translate-y-2 hover:shadow-xl transition duration-300 mx-auto">
+                        <img :src="'Assets/Images/' + (card === 1 ? 'Web/WebBanner.png' :
+                                            card === 2 ? 'App/AppBanner.png' :
+                                            card === 3 ? 'Ai & ML/AI&ML-Banner.png' :
+                                            card === 4 ? 'DM&SEO/banner.png' :
+                                            card === 5 ? 'Branding&Identity/Branding.png' :
+                                                         'IT Consulting/Consulting.png')" alt=""
+                            class="rounded-lg mb-4 h-48 w-full object-cover" />
+                        <h3 class="text-xl font-bold mb-2"
+                            x-text="['Web Development', 'App Development', 'AI & Machine Learning', 'Digital Marketing & SEO', 'Branding & Identity', 'IT Consulting'][card - 1]">
+                        </h3>
+                        <p class="text-gray-300 text-sm" x-text="[
+              'Custom websites & web apps that combine performance with sleek UI/UX design, tailored to your brand goals.',
+              'Build robust Android & iOS mobile apps that elevate user experiences and drive business growth.',
+              'Integrate smart systems into your business with data-driven AI and intelligent automation solutions.',
+              'Accelerate growth with MetaWave’s digital strategies — SEO, social, content marketing, and paid campaigns.',
+              'We craft brand visuals & messaging that resonate with your audience and stand out in the digital space.',
+              'Empower your growth with expert guidance in digital transformation, systems, and IT strategy.'
+            ][card - 1]"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Swiper Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Solutions Section -->
+    <section class="bg-[#0A1A2E] text-white py-24 px-6 md:px-10" id="solutions">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold uppercase text-[#D4AF37]">Our Cutting-Edge Solutions</h2>
+            <p class="text-gray-300 text-base mt-4">We craft tailored solutions to help you grow, scale, and innovate in
+                the digital era.</p>
+        </div>
+
+        <!-- Desktop View -->
+        <div class="hidden lg:flex justify-center gap-6 flex-wrap">
+            <!-- Column 1 -->
+            <div class="flex flex-col gap-5 min-w-[260px] max-w-[280px]">
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Product Development</h3>
+                    <p class="text-sm text-gray-300">Create complete software or apps from start to finish.</p>
+                </div>
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Smart Reports</h3>
+                    <p class="text-sm text-gray-300">See your business numbers in easy-to-read dashboards.</p>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="flex flex-col gap-5 min-w-[260px] max-w-[280px]">
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Task Automation</h3>
+                    <p class="text-sm text-gray-300">Use AI to handle repeat work and save your team's time.</p>
+                </div>
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl border border-[#D4AF37] hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Marketing Strategy</h3>
+                    <p class="text-sm text-gray-300">Get more leads and customers with proven marketing plans.</p>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="flex flex-col gap-5 min-w-[260px] max-w-[280px]">
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Cloud Setup</h3>
+                    <p class="text-sm text-gray-300">Run your business apps online with secure, flexible tools.</p>
+                </div>
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Smart Chatbots</h3>
+                    <p class="text-sm text-gray-300">Let AI bots answer common customer questions for you.</p>
+                </div>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="flex flex-col gap-5 min-w-[260px] max-w-[280px]">
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Boost Conversions</h3>
+                    <p class="text-sm text-gray-300">Make your website work better so more visitors take action.</p>
+                </div>
+                <div
+                    class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl hover:bg-gradient-to-br hover:from-[#D4AF37] hover:to-[#0A1A2E] hover:text-black transition duration-300">
+                    <h3 class="text-xl font-semibold mb-2">Privacy & Security</h3>
+                    <p class="text-sm text-gray-300">Keep user data safe and meet international safety rules.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile/Tablet Swiper View -->
+        <div class="lg:hidden">
+            <div class="swiper solutionsSwiper px-2">
+                <div class="swiper-wrapper">
+                    <!-- Web Development -->
+                    <div class="swiper-slide">
+                        <div class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl h-full">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Web Development</h3>
+                            <p class="text-sm text-gray-300">Build fast, secure, and scalable websites tailored to your
+                                business goals.</p>
+                        </div>
+                    </div>
+
+                    <!-- App Development -->
+                    <div class="swiper-slide">
+                        <div class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl h-full">
+                            <h3 class="text-xl font-semibold mb-2 text-white">App Development</h3>
+                            <p class="text-sm text-gray-300">Create intuitive mobile apps that engage users and drive
+                                results.</p>
+                        </div>
+                    </div>
+
+                    <!-- Digital Marketing -->
+                    <div class="swiper-slide">
+                        <div class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl h-full">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Digital Marketing</h3>
+                            <p class="text-sm text-gray-300">Grow your brand online with result-driven digital marketing
+                                strategies.</p>
+                        </div>
+                    </div>
+
+                    <!-- Search Engine Optimization -->
+                    <div class="swiper-slide">
+                        <div class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl h-full">
+                            <h3 class="text-xl font-semibold mb-2 text-white">SEO Services</h3>
+                            <p class="text-sm text-gray-300">Improve your website's visibility and rank higher on search
+                                engines.</p>
+                        </div>
+                    </div>
+
+                    <!-- Artificial Intelligence -->
+                    <div class="swiper-slide">
+                        <div class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl h-full">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Artificial Intelligence</h3>
+                            <p class="text-sm text-gray-300">Leverage AI to automate, optimize, and scale your business
+                                processes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning -->
+                    <div class="swiper-slide">
+                        <div class="bg-gradient-to-br from-[#101F33] to-[#1B2F48] p-6 rounded-xl shadow-xl h-full">
+                            <h3 class="text-xl font-semibold mb-2 text-white">Machine Learning</h3>
+                            <p class="text-sm text-gray-300">Unlock predictive insights and smarter decisions through ML
+                                models.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper JS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper('.solutionsSwiper', {
+            slidesPerView: 1.1,
+            spaceBetween: 20,
+            loop: true,
+            grabCursor: true,
+            centeredSlides: true,
+            breakpoints: {
+                640: {
+                    slidesPerView: 1.2
+                }
+            }
+        });
+    </script>
+
+
+    <section id="portfolio" class="bg-[#0B1B2A] text-white px-5 py-20 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-[#D4AF37] mb-2">Our Project Portfolio</h2>
+        <p class="text-gray-300 text-base sm:text-lg mb-10 max-w-2xl mx-auto">
+            Discover how MetaWave Innovations transforms businesses through technology and creativity.
+        </p>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button
+                class="filter-btn active border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition px-4 py-2 rounded-full text-sm"
+                data-category="all">All</button>
+            <button
+                class="filter-btn border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition px-4 py-2 rounded-full text-sm"
+                data-category="web">Web Development</button>
+            <button
+                class="filter-btn border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition px-4 py-2 rounded-full text-sm"
+                data-category="app">App Development</button>
+            <button
+                class="filter-btn border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition px-4 py-2 rounded-full text-sm"
+                data-category="marketing">Digital Marketing</button>
+            <button
+                class="filter-btn border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition px-4 py-2 rounded-full text-sm"
+                data-category="ai">AI & ML</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 portfolio-grid">
+            <!-- Web Projects -->
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="web">
+                <img src="assets/images/Portfolio/daybreakweekly.jpeg" alt="DayBreakWeekly"
+                    class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">DayBreakWeekly</h3>
+                    <p class="text-sm text-gray-300">UK-based local deal listing and promotion platform. <a
+                            href="https://daybreakweekly.co.uk/" target="_blank"
+                            class="text-[#D4AF37] underline ml-1">View Project</a></p>
+                </div>
+            </div>
+
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="web">
+                <img src="assets/images/Portfolio/Expense-Voyage.png" alt="Expense Voyage"
+                    class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">Expense Voyage</h3>
+                    <p class="text-sm text-gray-300">Finance tracking system for personal and group users. <a
+                            href="http://expense-voyage.getenjoyment.net/" target="_blank"
+                            class="text-[#D4AF37] underline ml-1">View Project</a></p>
+                </div>
+            </div>
+
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="web">
+                <img src="assets/images/Portfolio/discountdukan.png" alt="Discount Dukkan"
+                    class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">Discount Dukkan</h3>
+                    <p class="text-sm text-gray-300">E-commerce deal and coupon platform with CMS. <a
+                            href="https://discountdukkan.com/" target="_blank"
+                            class="text-[#D4AF37] underline ml-1">View Project</a></p>
+                </div>
+            </div>
+
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="marketing">
+                <img src="assets/images/Portfolio/gosavebig.png" alt="GoSaveBig" class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">GoSaveBig</h3>
+                    <p class="text-sm text-gray-300">Deals platform built with SEO and affiliate strategy. <a
+                            href="https://gosavebig.com/" target="_blank" class="text-[#D4AF37] underline ml-1">View
+                            Project</a></p>
+                </div>
+            </div>
+
+            <!-- Sample App Projects -->
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="app">
+                <img src="assets/images/Portfolio/WellTrack.png" alt="WellTrack" class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">WellTrack</h3>
+                    <p class="text-sm text-gray-300">Health and wellness mobile app for fitness goal tracking.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="app">
+                <img src="assets/images/Portfolio/EduFlex.png" alt="EduFlex" class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">EduFlex</h3>
+                    <p class="text-sm text-gray-300">Interactive mobile learning app with gamified courses.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="app">
+                <img src="assets/images/Portfolio/QuickTask.png" alt="QuickTask" class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">QuickTask</h3>
+                    <p class="text-sm text-gray-300">Task manager app with calendar sync and voice control.</p>
+                </div>
+            </div>
+
+            <!-- Sample AI Project -->
+            <div class="portfolio-card bg-[#101F33] rounded-xl overflow-hidden shadow-lg" data-category="ai">
+                <img src="assets/images/Portfolio/InsightBot.png" alt="InsightBot" class="w-full h-48 object-cover">
+                <div class="p-5 text-left">
+                    <h3 class="text-lg font-semibold text-white mb-2">InsightBot</h3>
+                    <p class="text-sm text-gray-300">AI-powered customer support assistant with natural language
+                        processing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Script -->
+    <script>
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                document.querySelectorAll('.portfolio-card').forEach(card => {
+                    card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .filter-btn.active {
+            background-color: #D4AF37;
+            color: black;
+        }
+    </style>
+
+
+    <script>
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const category = btn.getAttribute('data-category');
+                document.querySelectorAll('.portfolio-card').forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Add Alpine.js CDN -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <footer class="bg-[#0f0f0f] text-white px-6 md:px-12 py-16 font-poppins">
+        <!-- Top -->
+        <div class="flex flex-col md:flex-row justify-between gap-10 mb-12">
+            <div class="text-center md:text-left max-w-xl mx-auto md:mx-0">
+                <h2 class="flex items-center justify-center md:justify-start gap-3 text-2xl font-semibold mb-3">
+                    <img src="Assets/Images/logo.png" alt="MetaWave Logo" class="w-10 h-auto" />
+                    <span>MetaWave Innovations</span>
+                </h2>
+                <p class="text-sm leading-relaxed text-gray-300">
+                    Building Next-Gen Web, AI & Digital Solutions. We turn bold ideas into powerful realities —
+                    empowering startups and global enterprises alike.
+                </p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex justify-center md:justify-end items-center gap-5 text-xl">
+                <a href="https://www.linkedin.com/company/metawave-innovation" class="hover:text-[#D4AF37]"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com" class="hover:text-[#D4AF37]"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/metawave.inn/" class="hover:text-[#D4AF37]"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://github.com/muntahasheikh" class="hover:text-[#D4AF37]"><i
+                        class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="max-w-3xl mx-auto mb-14 text-center">
+            <h3 class="text-lg font-semibold mb-2">Subscribe to our newsletter</h3>
+            <p class="text-sm text-gray-400 mb-4">Get the latest updates, insights & offers from MetaWave Innovations.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3 items-center justify-center">
+                <input type="email" placeholder="Enter your email"
+                    class="w-full sm:w-2/3 px-4 py-2 text-black rounded-full focus:outline-none" required />
+                <button type="submit"
+                    class="bg-[#D4AF37] text-black font-semibold px-6 py-2 rounded-full hover:bg-yellow-500 transition">Subscribe</button>
+            </form>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center md:text-left mb-10">
+            <div>
+                <h4 class="text-[#D4AF37] font-semibold mb-3 text-lg">Company</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="about.html" class="hover:text-[#D4AF37]">About Us</a></li>
+                    <li><a href="#solutions" class="hover:text-[#D4AF37]">Solutions</a></li>
+                    <li><a href="contact.html" class="hover:text-[#D4AF37]">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[#D4AF37] font-semibold mb-3 text-lg">Services</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-[#D4AF37]">Web Development</a></li>
+                    <li><a href="#" class="hover:text-[#D4AF37]">AI & ML</a></li>
+                    <li><a href="#" class="hover:text-[#D4AF37]">Digital Marketing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[#D4AF37] font-semibold mb-3 text-lg">Global Offices</h4>
+                <p class="text-sm text-gray-300 leading-relaxed">• Karachi<br>• Dubai<br>• London<br>• New York</p>
+            </div>
+            <div x-data="{ show: false }">
+                <h4 @click="show = !show"
+                    class="cursor-pointer flex items-center justify-center md:justify-start gap-2 text-[#D4AF37] font-semibold mb-3 text-lg">
+                    Contact
+                    <svg :class="{'rotate-180': show}" class="w-4 h-4 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </h4>
+                <div x-show="show" x-transition>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Email: <a href="mailto:metawave.innovations@gmail.com"
+                            class="hover:text-[#D4AF37]">metawave.innovations@gmail.com</a><br>
+                        Phone: +92-317-3448493
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
+            &copy; 2025 <span class="text-[#D4AF37]">MetaWave Innovations</span>. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Before </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+
+</html>

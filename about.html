@@ -2,8 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Head -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
@@ -18,259 +24,6 @@
             color: white;
         }
 
-        .navbar {
-            background: linear-gradient(to right, #0B1B2A, #142A3E);
-            padding: 20px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-container img {
-            width: 60px;
-            height: 60px;
-        }
-
-        .logo-text {
-            font-size: 32px;
-            font-weight: 900;
-            color: #D4AF37;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(212, 175, 55, 0.2);
-            transition: transform 0.3s ease, letter-spacing 0.3s ease;
-        }
-
-        .logo-text:hover {
-            transform: scale(1.05);
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #EDEDED;
-            font-weight: 500;
-            font-size: 16px;
-            position: relative;
-            padding: 6px 4px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -3px;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #D4AF37, #fff3b0);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease;
-        }
-
-        .nav-links a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .nav-links a:hover {
-            color: #D4AF37;
-        }
-
-        @media (max-width: 991px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 20px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 20px;
-                margin-top: 10px;
-            }
-        }
-
-        .about-hero {
-            height: 100vh;
-            background: radial-gradient(circle at center, #101f33 0%, #0B1B2A 100%),
-                url("/assets/Images/logo\ FUll.png") center/contain no-repeat;
-            background-blend-mode: overlay;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(12, 21, 34, 0.6);
-            backdrop-filter: blur(0px);
-            z-index: 1;
-        }
-
-        .about-hero::after {
-            content: '';
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.05), transparent 70%);
-            top: -100px;
-            left: -150px;
-            z-index: 0;
-            pointer-events: none;
-            filter: blur(80px);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            max-width: 960px;
-            margin: auto;
-            transition: all 0.3s ease-in-out;
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .hero-content h1:first-of-type {
-            font-size: 64px;
-            font-weight: 900;
-            font-family: 'Playfair Display', serif;
-            color: #D4AF37;
-            margin-bottom: 10px;
-            text-shadow: 0 3px 6px rgba(212, 175, 55, 0.3);
-            letter-spacing: 2px;
-        }
-
-        .hero-content h1:nth-of-type(2) {
-            font-size: 30px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 25px;
-            line-height: 1.4;
-            text-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
-        }
-
-        .hero-content p {
-            font-size: 20px;
-            color: #ccc;
-            line-height: 1.7;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Subtle entrance animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .company-overview {
-            padding: 30px 40px;
-            background: #0F1E31;
-        }
-
-        .overview-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .text-block,
-        .image-block {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .text-block h2 {
-            font-size: 45px;
-            color: #D4AF37;
-            margin-bottom: 20px;
-        }
-
-        .text-block p {
-            font-size: 17px;
-            color: #ccc;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        .image-block img {
-            width: 100%;
-            height: 400px;
-            margin-top: 70px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-        }
-
-        .mission-values {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 20px 20px;
-            background: #101F33;
-            justify-content: center;
-        }
-
-        .value-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 30px;
-            width: 300px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .value-card h3 {
-            font-size: 20px;
-            color: #D4AF37;
-            margin-bottom: 10px;
-        }
-
-        .value-card p {
-            font-size: 15px;
-            color: #ccc;
-            line-height: 1.5;
-        }
 
         .services-overview {
             background: #0B1B2A;
@@ -392,211 +145,198 @@
                 font-size: 16px;
             }
         }
-
-        .meta-footer {
-            background: linear-gradient(to right, #0B1B2A, #142A3E);
-            color: #ccc;
-            padding: 20px 80px 30px;
-            border-top: 2px solid #D4AF37;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .footer-top {
-            justify-content: space-between;
-        }
-
-        .meta-footer h2 {
-            font-size: 32px;
-            color: #D4AF37;
-            font-family: 'Playfair Display', serif;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-            margin-bottom: 15px;
-        }
-
-        .meta-footer p {
-            max-width: 600px;
-            font-size: 15px;
-            line-height: 1.6;
-            color: #bbb;
-            text-align: start;
-        }
-
-        .meta-footer .social-icons {
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            padding: 60px 80px 20px;
-        }
-
-        .meta-footer .social-icons .social {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 20px;
-            color: white;
-            background-color: #D4AF37;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-            border: 2px solid transparent;
-        }
-
-        /* Brand backgrounds */
-        .meta-footer .social.linkedin {
-            background-color: #0077B5;
-        }
-
-        .meta-footer .social.twitter {
-            background-color: #1DA1F2;
-        }
-
-        .meta-footer .social.instagram {
-            background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fd5949 40%, #d6249f 70%, #285AEB 100%);
-        }
-
-        .meta-footer .social.github {
-            background-color: #171515;
-        }
-
-        /* Hover Effects */
-        .meta-footer .social-icons .social:hover {
-            transform: scale(1.15);
-            border: 2px solid #D4AF37;
-            box-shadow: 0 0 15px #D4AF37;
-            color: #fff;
-        }
-
-        .meta-footer .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
-            margin-bottom: 40px;
-        }
-
-        .meta-footer h4 {
-            color: #D4AF37;
-            margin-bottom: 12px;
-            font-size: 18px;
-        }
-
-        .meta-footer ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .meta-footer ul li {
-            margin: 8px 0;
-        }
-
-        .meta-footer ul li a {
-            text-decoration: none;
-            color: #aaa;
-            transition: color 0.3s;
-        }
-
-        .meta-footer ul li a:hover {
-            color: #D4AF37;
-        }
-
-        .meta-footer .footer-bottom {
-            text-align: center;
-            font-size: 14px;
-            color: #777;
-        }
-
-        .meta-footer .golden {
-            color: #D4AF37;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .meta-footer {
-                text-align: center;
-            }
-
-            .meta-footer .footer-grid {
-                text-align: left;
-            }
-        }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4AF37',
+                        dark: '#0B1B2A',
+                        darkAlt: '#142A3E',
+                    },
+                    dropShadow: {
+                        gold: '0 2px 4px rgba(212,175,55,0.2)',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+
+    <!-- Custom Tailwind Styles -->
+    <style type="text/tailwindcss">
+        body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-animated-link {
+      @apply relative font-medium text-base text-[#EDEDED] px-1 py-2 transition-all duration-300 hover:text-primary;
+    }
+
+    .nav-animated-link::after {
+      content: '';
+      @apply absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-primary to-[#fff3b0] scale-x-0 origin-right transition-transform duration-300;
+    }
+
+    .nav-animated-link:hover::after {
+      @apply scale-x-100 origin-left;
+    }
+
+    .nav-animated-link.active {
+      @apply text-primary;
+    }
+
+    .nav-animated-link.active::after {
+      @apply scale-x-100 origin-left;
+    }
+
+    .mobile-style {
+      @apply text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-darkAlt transition-all duration-200;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-style {
+        @apply text-base font-medium py-2 px-2 rounded-none bg-transparent;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="logo-container">
-            <img src="Assets/Images/logo.png" alt="MetaWave Logo">
-            <div class="logo-text">MetaWave</div>
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 bg-gradient-to-r from-dark to-darkAlt backdrop-blur-md shadow-lg border-b border-[rgba(212,175,55,0.1)]">
+        <div class="max-w-8xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo.png" alt="MetaWave Logo" class="w-14 h-14">
+                <div
+                    class="text-[28px] sm:text-[30px] lg:text-[32px] font-extrabold text-primary uppercase tracking-wide drop-shadow-gold transition-transform duration-300 hover:scale-105 hover:tracking-wider">
+                    MetaWave
+                </div>
+            </div>
+
+            <!-- Hamburger -->
+            <div class="lg:hidden">
+                <button id="menu-btn"
+                    class="text-3xl text-primary focus:outline-none transition-transform duration-300 hover:scale-110">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+                <a href="index.html" class="nav-animated-link active">Home</a>
+                <a href="#services" class="nav-animated-link">Services</a>
+                <a href="#solutions" class="nav-animated-link">Solutions</a>
+                <a href="#portfolio" class="nav-animated-link">Portfolio</a>
+                <a href="about.html" class="nav-animated-link">About</a>
+                <a href="contact.html" class="nav-animated-link">Contact</a>
+            </nav>
         </div>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#services">Services</a>
-            <a href="index.html#solutions">Solutions</a>
-            <a href="index.html#portfolio">Portfolio</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden flex flex-col md:flex-row md:justify-center md:gap-6 bg-darkAlt md:bg-transparent px-6 md:px-0 pt-4 md:pt-4 pb-6 md:pb-4 space-y-4 md:space-y-0 animate-fade-down transition-all duration-300 md:rounded-none rounded-b-xl shadow-xl md:shadow-none">
+            <a href="index.html" class="nav-animated-link mobile-style active">Home</a>
+            <a href="#services" class="nav-animated-link mobile-style">Services</a>
+            <a href="#solutions" class="nav-animated-link mobile-style">Solutions</a>
+            <a href="#portfolio" class="nav-animated-link mobile-style">Portfolio</a>
+            <a href="about.html" class="nav-animated-link mobile-style">About</a>
+            <a href="contact.html" class="nav-animated-link mobile-style">Contact</a>
+        </div>
     </header>
+    <!-- Scripts -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    <section class="about-hero">
-        <div class="hero-content">
-            <h1>MetaWave Innovations</h1>
-            <h1>Driven by Innovation. Powered by Passion.</h1>
-            <p>At MetaWave Innovations, we architect the future of tech — transforming bold ideas into real-world
-                impact.</p>
-        </div>
-    </section>
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const currentUrl = window.location.href;
+        document.querySelectorAll('a.nav-animated-link').forEach(link => {
+            if (currentUrl.includes(link.getAttribute('href'))) {
+                link.classList.add('active');
+            }
+        });
+    </script>
 
 
-    <section class="company-overview">
-        <div class="overview-content">
-            <div class="text-block">
-                <h2>Who We Are</h2>
-                <p>
+    <section class="py-12">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10">
+            <div class="flex-1 space-y-6">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Who We Are</h2>
+                <p class="text-white/90 leading-relaxed">
                     MetaWave Innovations is a global tech powerhouse that engineers future-ready solutions in Web
-                    Development, Mobile Apps, AI, and Digital Transformation. With a strong footprint across the UAE,
-                    UK, USA, and Asia, we help startups, scale-ups, and enterprises evolve with speed, intelligence, and
+                    Development, Mobile Apps, AI, and Digital Transformation. With a strong footprint across the
+                    UAE,
+                    UK, USA, and Asia, we help startups, scale-ups, and enterprises evolve with speed, intelligence,
+                    and
                     innovation.
                 </p>
-                <p>
-                    Our mission is to blend cutting-edge technology with strategic vision to craft scalable, secure, and
-                    impactful digital ecosystems. Whether it’s launching a bold idea or optimizing a complex system, we
+                <p class="text-white/90 leading-relaxed">
+                    Our mission is to blend cutting-edge technology with strategic vision to craft scalable, secure,
+                    and
+                    impactful digital ecosystems. Whether it’s launching a bold idea or optimizing a complex system,
+                    we
                     partner with our clients to drive meaningful growth and sustainable success.
                 </p>
-                <p>
-                    At MetaWave, we don’t just deliver software — we deliver transformation. Our multidisciplinary team
-                    brings together creativity, engineering excellence, and data-driven insights to reshape the future
+                <p class="text-white/90 leading-relaxed">
+                    At MetaWave, we don’t just deliver software — we deliver transformation. Our multidisciplinary
+                    team
+                    brings together creativity, engineering excellence, and data-driven insights to reshape the
+                    future
                     of business in the digital era.
                 </p>
             </div>
-            <div class="image-block">
-                <img src="Assets/Images/Team2.png" alt="Team at Work" />
+            <div class="flex-1">
+                <img src="Assets/Images/Team2.png" alt="Team at Work"
+                    class="w-full h-auto rounded-xl shadow-lg object-cover" />
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12">
+        <div class="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+                class="bg-white/10 hover:bg-white/20 transition-colors duration-300 shadow-md rounded-lg p-6 text-center">
+                <h3 class="text-xl font-semibold mb-2">🚀 Our Mission</h3>
+                <p class="text-white/90">Empowering businesses with intelligent, user-focused digital experiences
+                    that scale and evolve.</p>
+            </div>
+            <div
+                class="bg-white/10 hover:bg-white/20 transition-colors duration-300 shadow-md rounded-lg p-6 text-center">
+                <h3 class="text-xl font-semibold mb-2">🌐 Our Vision</h3>
+                <p class="text-white/90">To become a global leader in full-stack innovation through a perfect blend
+                    of creativity, tech, and strategy.</p>
+            </div>
+            <div
+                class="bg-white/10 hover:bg-white/20 transition-colors duration-300 shadow-md rounded-lg p-6 text-center">
+                <h3 class="text-xl font-semibold mb-2">💡 Core Philosophy</h3>
+                <p class="text-white/90">We believe in co-creating value with clients through transparency, speed,
+                    and cutting-edge solutions.</p>
             </div>
         </div>
     </section>
 
 
-    <section class="mission-values">
-        <div class="value-card">
-            <h3>🚀 Our Mission</h3>
-            <p>Empowering businesses with intelligent, user-focused digital experiences that scale and evolve.</p>
-        </div>
-        <div class="value-card">
-            <h3>🌐 Our Vision</h3>
-            <p>To become a global leader in full-stack innovation through a perfect blend of creativity, tech, and
-                strategy.</p>
-        </div>
-        <div class="value-card">
-            <h3>💡 Core Philosophy</h3>
-            <p>We believe in co-creating value with clients through transparency, speed, and cutting-edge solutions.</p>
-        </div>
-    </section>
-
     <section class="services-overview">
         <h2>Our Expertise</h2>
-        <div class="services-grid" id="expertiseGrid">
+        <div class="services-grid gap-y-12" id="expertiseGrid">
             <!-- Top 5 Expertise (Always Visible) -->
             <div class="service-card">
                 <div class="icon">🌐</div>
@@ -701,6 +441,7 @@
             const hiddenCards = document.querySelectorAll(".service-card.hidden");
             let currentVisible = 0;
             const step = 4;
+            let isExpanded = false;
 
             function showMore() {
                 let shown = 0;
@@ -712,7 +453,7 @@
 
                 if (currentVisible >= hiddenCards.length) {
                     toggleButton.innerHTML = '<i class="fas fa-minus icon-gold"></i> Show Less';
-
+                    isExpanded = true;
                 }
             }
 
@@ -720,86 +461,225 @@
                 hiddenCards.forEach(card => card.style.display = "none");
                 currentVisible = 0;
                 toggleButton.innerHTML = '<i class="fas fa-plus icon-gold"></i> Show More';
-
+                isExpanded = false;
             }
 
+            // Initialize with only the first batch hidden
+            showLess();
+
             toggleButton.addEventListener("click", () => {
-                if (currentVisible >= hiddenCards.length) {
+                if (isExpanded) {
                     showLess();
                 } else {
                     showMore();
                 }
             });
-
-            // Initialize all hidden cards
-            hiddenCards.forEach(card => card.style.display = "none");
         </script>
 
+
+    </section>
+
+    <!-- Swiper CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <section class="bg-dark py-16 px-4 md:px-12 lg:px-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">What Our Clients Say</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto">Real feedback from partners who trusted MetaWave Innovations.</p>
+        </div>
+
+        <div class="swiper testimonialSwiper">
+            <div class="swiper-wrapper">
+                <!-- Testimonial 1 -->
+                <div class="swiper-slide">
+                    <div class="bg-gray-50 shadow-md rounded-2xl p-6 mx-2 h-full flex flex-col justify-between">
+                        <p class="text-gray-700 text-base leading-relaxed mb-4">"MetaWave delivered exactly what we
+                            needed—fast, scalable, and beautifully designed!"</p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client"
+                                class="w-12 h-12 rounded-full object-cover" />
+                            <div>
+                                <p class="font-semibold text-gray-800">David Khan</p>
+                                <p class="text-sm text-gray-500">CTO, StartupX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="swiper-slide">
+                    <div class="bg-gray-50 shadow-md rounded-2xl p-6 mx-2 h-full flex flex-col justify-between">
+                        <p class="text-gray-700 text-base leading-relaxed mb-4">"Excellent team to work with.
+                            Professional, punctual, and highly creative."</p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client"
+                                class="w-12 h-12 rounded-full object-cover" />
+                            <div>
+                                <p class="font-semibold text-gray-800">Sarah Ahmed</p>
+                                <p class="text-sm text-gray-500">Marketing Head, Luxuria</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="swiper-slide">
+                    <div class="bg-gray-50 shadow-md rounded-2xl p-6 mx-2 h-full flex flex-col justify-between">
+                        <p class="text-gray-700 text-base leading-relaxed mb-4">"The AI integration they built boosted
+                            our productivity by 40%. Absolutely amazing!"</p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client"
+                                class="w-12 h-12 rounded-full object-cover" />
+                            <div>
+                                <p class="font-semibold text-gray-800">John Malik</p>
+                                <p class="text-sm text-gray-500">CEO, InsightlyAI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more slides as needed -->
+            </div>
+
+            <!-- Swiper navigation -->
+            <div class="flex justify-center mt-8 gap-4">
+                <div class="swiper-button-prev !text-gray-800 hover:scale-110 transition" role="button"></div>
+                <div class="swiper-button-next !text-gray-800 hover:scale-110 transition" role="button"></div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const swiper = new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    </script>
+
+    <!-- Add Alpine.js CDN -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+
+    <!-- Call to Action Section -->
+    <section class="cta-section bg-primary text-dark py-16 px-6 md:px-20 text-center">
+        <h2 class="text-[32px] font-bold mb-6">Ready to Build with MetaWave?</h2>
+        <p class="mb-8 max-w-2xl mx-auto text-lg">Let’s partner to innovate, accelerate, and deliver digital success
+            together. Talk to us today!</p>
+        <a href="/contact"
+            class="bg-dark hover:bg-darkAlt text-white py-3 px-6 rounded-lg transition duration-300 inline-block font-semibold">Contact
+            Us Now</a>
     </section>
 
 
 
-    <footer class="meta-footer">
-        <div class="footer-top" style="display: flex;">
-            <div style="text-align: center !important; align-items: center;">
-                <h2 style="display: flex; align-items: center; gap: 8px;">
-                    <img src="Assets/Images/logo.png" alt="MetaWave Logo" style="width: 60px; height: auto;">
+
+    <!-- Footer -->
+    <footer class="bg-[#0f0f0f] text-white px-6 md:px-12 py-16 font-poppins">
+        <!-- Top -->
+        <div class="flex flex-col md:flex-row justify-between gap-10 mb-12">
+            <div class="text-center md:text-left max-w-xl mx-auto md:mx-0">
+                <h2 class="flex items-center justify-center md:justify-start gap-3 text-2xl font-semibold mb-3">
+                    <img src="Assets/Images/logo.png" alt="MetaWave Logo" class="w-10 h-auto" />
                     <span>MetaWave Innovations</span>
                 </h2>
-                <p>
+                <p class="text-sm leading-relaxed text-gray-300">
                     Building Next-Gen Web, AI & Digital Solutions. We turn bold ideas into powerful realities —
                     empowering startups and global enterprises alike.
                 </p>
-
-
-            </div>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/company/metawave-innovation" class="social linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/metawave.inn/" class="social twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/metawave.inn/" class="social instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://muntahasheikh.github.io/MetaWave.Innovations/" class="social github" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
 
-
-
-        </div>
-
-        <div class="footer-grid">
-            <div>
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#solutions">Solutions</a></li>
-                    <li><a href="contact.html">Careers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">AI & ML</a></li>
-                    <li><a href="#">Digital Marketing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Global Offices</h4>
-                <p> • Karachi <br>
-                    • Dubai <br>
-                    • London <br>
-                    • New York
-                </p>
-            </div>
-            <div>
-                <h4>Contact</h4>
-                <p>Email: <a href="mailto:metawave.innovations@gmail.com">metawave.innovations@gmail.com</a><br>
-                    Phone: +92-317-3448493</p>
+            <!-- Social Links -->
+            <div class="flex justify-center md:justify-end items-center gap-5 text-xl">
+                <a href="https://www.linkedin.com/company/metawave-innovation" class="hover:text-[#D4AF37]"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com" class="hover:text-[#D4AF37]"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/metawave.inn/" class="hover:text-[#D4AF37]"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://github.com/muntahasheikh" class="hover:text-[#D4AF37]"><i
+                        class="fab fa-github"></i></a>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            &copy; 2025 <span class="golden">MetaWave Innovations</span>. All Rights Reserved.
+        <!-- Newsletter -->
+        <div class="max-w-3xl mx-auto mb-14 text-center">
+            <h3 class="text-lg font-semibold mb-2">Subscribe to our newsletter</h3>
+            <p class="text-sm text-gray-400 mb-4">Get the latest updates, insights & offers from MetaWave Innovations.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3 items-center justify-center">
+                <input type="email" placeholder="Enter your email"
+                    class="w-full sm:w-2/3 px-4 py-2 text-black rounded-full focus:outline-none" required />
+                <button type="submit"
+                    class="bg-[#D4AF37] text-black font-semibold px-6 py-2 rounded-full hover:bg-yellow-500 transition">Subscribe</button>
+            </form>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center md:text-left mb-10">
+            <div>
+                <h4 class="text-[#D4AF37] font-semibold mb-3 text-lg">Company</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="about.html" class="hover:text-[#D4AF37]">About Us</a></li>
+                    <li><a href="#solutions" class="hover:text-[#D4AF37]">Solutions</a></li>
+                    <li><a href="contact.html" class="hover:text-[#D4AF37]">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[#D4AF37] font-semibold mb-3 text-lg">Services</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-[#D4AF37]">Web Development</a></li>
+                    <li><a href="#" class="hover:text-[#D4AF37]">AI & ML</a></li>
+                    <li><a href="#" class="hover:text-[#D4AF37]">Digital Marketing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[#D4AF37] font-semibold mb-3 text-lg">Global Offices</h4>
+                <p class="text-sm text-gray-300 leading-relaxed">• Karachi<br>• Dubai<br>• London<br>• New York</p>
+            </div>
+            <div x-data="{ show: false }">
+                <h4 @click="show = !show"
+                    class="cursor-pointer flex items-center justify-center md:justify-start gap-2 text-[#D4AF37] font-semibold mb-3 text-lg">
+                    Contact
+                    <svg :class="{'rotate-180': show}" class="w-4 h-4 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </h4>
+                <div x-show="show" x-transition>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Email: <a href="mailto:metawave.innovations@gmail.com"
+                            class="hover:text-[#D4AF37]">metawave.innovations@gmail.com</a><br>
+                        Phone: +92-317-3448493
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
+            &copy; 2025 <span class="text-[#D4AF37]">MetaWave Innovations</span>. All Rights Reserved.
         </div>
     </footer>
+
+    <!-- Before </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script src="//code.tidio.co/pndjra5dztv6cr2vsaggwwirvpxqkmjj.js" async></script>
 </body>
 
